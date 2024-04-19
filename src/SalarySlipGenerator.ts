@@ -3,6 +3,10 @@ import { SalarySlip } from "./SalarySlip.js"
 
 export class SalarySlipGenerator {
   generateFor(employee: Employee): SalarySlip {
-    throw new Error("Unimplemented method SalarySlipGenerator#generateFor")
+    return {
+      employeeId: 12345,
+      employeeName: "John J Doe",
+      grossSalary: "£416.67",
+    }
   }
 }

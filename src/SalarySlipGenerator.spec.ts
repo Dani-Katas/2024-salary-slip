@@ -25,7 +25,7 @@ describe("SalarySlipGenerator", () => {
 
   it("assigns the employee name in the salary slip", () => {
     const salarySlipGenerator = new SalarySlipGenerator()
-    let name = "John"
+    const name = "John"
     const employee = new Employee(1, name, 5000)
 
     const salarySlip = salarySlipGenerator.generateFor(employee)

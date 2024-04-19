@@ -2,7 +2,7 @@ export class Employee {
   constructor(
     private readonly id: number,
     private readonly name: string,
-    grossSalary: number,
+    private readonly grossSalary: number,
   ) {}
 
   getId() {
@@ -11,5 +11,9 @@ export class Employee {
 
   getName() {
     return this.name
+  }
+
+  getGrossSalary() {
+    return this.grossSalary
   }
 }

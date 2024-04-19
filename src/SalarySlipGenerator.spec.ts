@@ -40,6 +40,6 @@ describe("SalarySlipGenerator", () => {
 
     const salarySlip = salarySlipGenerator.generateFor(employee)
 
-    expect(salarySlip.monthlyGrossSalary).toBe("£10")
+    expect(salarySlip.monthlyGrossSalary).toBe("£10.00")
   })
 })

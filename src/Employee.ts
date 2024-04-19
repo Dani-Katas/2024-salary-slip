@@ -8,10 +8,13 @@ export class Employee {
   ) {}
 
   getSalarySlip(): SalarySlip {
+    const result = this.grossSalary / 12
+    const formatted = "£" + result.toFixed(2)
+
     return {
       employeeId: this.id,
       employeeName: this.name,
-      monthlyGrossSalary: this.grossSalary === 120 ? "£10" : "£416.67",
+      monthlyGrossSalary: formatted,
     }
   }
 }

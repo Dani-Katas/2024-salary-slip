@@ -10,6 +10,6 @@ export class Money {
   }
 
   public divideBy(divider: number): Money {
-    return new Money(this.value / 12)
+    return new Money(this.value / divider)
   }
 }

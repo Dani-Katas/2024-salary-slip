@@ -6,7 +6,7 @@ export class SalarySlipGenerator {
     return {
       employeeId: employee.getId(),
       employeeName: employee.getName(),
-      grossSalary: "£416.67",
+      monthlyGrossSalary: "£416.67",
     }
   }
 }

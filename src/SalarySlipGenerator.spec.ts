@@ -11,7 +11,7 @@ describe("SalarySlipGenerator", () => {
 
     expect(salarySlip.employeeId).toBe(12345)
     expect(salarySlip.employeeName).toBe("John J Doe")
-    expect(salarySlip.grossSalary).toBe("£416.67")
+    expect(salarySlip.monthlyGrossSalary).toBe("£416.67")
   })
 
   it("assigns the employee ID in the salary slip", () => {
@@ -31,5 +31,15 @@ describe("SalarySlipGenerator", () => {
     const salarySlip = salarySlipGenerator.generateFor(employee)
 
     expect(salarySlip.employeeName).toBe(name)
+  })
+
+  it("assigns the monthly gross salary in the salary slip", () => {
+    const salarySlipGenerator = new SalarySlipGenerator()
+    const name = "John"
+    const employee = new Employee(1, name, 120)
+
+    const salarySlip = salarySlipGenerator.generateFor(employee)
+
+    expect(salarySlip.monthlyGrossSalary).toBe("£10")
   })
 })

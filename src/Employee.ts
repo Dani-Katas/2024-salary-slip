@@ -1,11 +1,15 @@
 export class Employee {
   constructor(
     private readonly id: number,
-    name: string,
+    private readonly name: string,
     grossSalary: number,
   ) {}
 
   getId() {
     return this.id
+  }
+
+  getName() {
+    return this.name
   }
 }

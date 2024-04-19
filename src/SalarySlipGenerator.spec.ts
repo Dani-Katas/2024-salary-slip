@@ -22,4 +22,14 @@ describe("SalarySlipGenerator", () => {
 
     expect(salarySlip.employeeId).toBe(1)
   })
+
+  it("assigns the employee name in the salary slip", () => {
+    const salarySlipGenerator = new SalarySlipGenerator()
+    let name = "John"
+    const employee = new Employee(1, name, 5000)
+
+    const salarySlip = salarySlipGenerator.generateFor(employee)
+
+    expect(salarySlip.employeeName).toBe(name)
+  })
 })

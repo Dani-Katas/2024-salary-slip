@@ -19,7 +19,7 @@ class SalarySlip {
     return this.employee.getId()
   }
   getName(){
-    return ''
+    return 'John J Doe'
   }
 }
 

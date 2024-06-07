@@ -1,42 +1,6 @@
-import { describe, it, expect } from "vitest"
-
-class Employee {
-  constructor(
-    private id: string,
-    private name: string,
-    private anualGrossSalary: number,
-  ) {}
-
-  getId() {
-    return this.id
-  }
-  getName() {
-    return this.name
-  }
-  getAnualGrossSalary(){
-    return this.anualGrossSalary
-  }
-}
-
-class SalarySlip {
-  constructor(private employee: Employee) {}
-
-  getId() {
-    return this.employee.getId()
-  }
-  getName(){
-    return this.employee.getName()
-  }
-  getMonthlyGrossSalary(){
-    return Math.round((this.employee.getAnualGrossSalary() / 12) * 100) / 100
-  }
-}
-
-class SalarySlipGenerator {
-  generateFor(employee: Employee): SalarySlip {
-    return new SalarySlip(employee)
-  }
-}
+import { describe, expect, it } from "vitest"
+import { Employee } from "./Employee.js"
+import { SalarySlipGenerator } from "./SalarySlipGenerator.js"
 
 describe("SalarySlipGenerator", () => {
   describe("generates the salary slip with the", () => {
@@ -53,7 +17,7 @@ describe("SalarySlipGenerator", () => {
 
     it("employee name", () => {
       const employeeId = "12345"
-      const employeeName = "John J Doe";
+      const employeeName = "John J Doe"
       const employee = new Employee(employeeId, employeeName, 5000)
       const salarySlipGenerator = new SalarySlipGenerator()
 
@@ -65,8 +29,8 @@ describe("SalarySlipGenerator", () => {
 
     it("monthly gross salary", () => {
       const employeeId = "12345"
-      const employeeName = "John J Doe";
-      const employeeAnnualGrossSalary = 5000;
+      const employeeName = "John J Doe"
+      const employeeAnnualGrossSalary = 5000
       const employee = new Employee(employeeId, employeeName, employeeAnnualGrossSalary)
       const salarySlipGenerator = new SalarySlipGenerator()
 
@@ -78,8 +42,8 @@ describe("SalarySlipGenerator", () => {
 
     it("monthly gross salary", () => {
       const employeeId = "12345"
-      const employeeName = "John J Doe";
-      const employeeAnnualGrossSalary = 12000;
+      const employeeName = "John J Doe"
+      const employeeAnnualGrossSalary = 12000
       const employee = new Employee(employeeId, employeeName, employeeAnnualGrossSalary)
       const salarySlipGenerator = new SalarySlipGenerator()
 

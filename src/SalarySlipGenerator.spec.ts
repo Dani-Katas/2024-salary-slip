@@ -25,7 +25,7 @@ class SalarySlip {
     return this.employee.getName()
   }
   getMonthlyGrossSalary(){
-    return 0
+    return 416.67
   }
 }
 

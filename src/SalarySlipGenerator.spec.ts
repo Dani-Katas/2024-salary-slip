@@ -24,6 +24,9 @@ class SalarySlip {
   getName(){
     return this.employee.getName()
   }
+  getMonthlyGrossSalary(){
+    return 0
+  }
 }
 
 class SalarySlipGenerator {
@@ -57,6 +60,17 @@ describe("SalarySlipGenerator", () => {
       expect(name).toBe(employeeName)
     })
 
-    it.todo("monthly gross salary")
+    it("monthly gross salary", () => {
+      const employeeId = "12345"
+      const employeeName = "John J Doe";
+      const employeeAnnualGrossSalary = 5000;
+      const employee = new Employee(employeeId, employeeName, employeeAnnualGrossSalary)
+      const salarySlipGenerator = new SalarySlipGenerator()
+
+      const salarySlip = salarySlipGenerator.generateFor(employee)
+
+      const monthlyGrossSalary = salarySlip.getMonthlyGrossSalary()
+      expect(monthlyGrossSalary).toBe(416.67)
+    })
   })
 })

@@ -3,12 +3,15 @@ import { describe, it, expect } from "vitest"
 class Employee {
   constructor(
     private id: string,
-    name: string,
+    private name: string,
     anualGrossSalary: number,
   ) {}
 
   getId() {
     return this.id
+  }
+  getName() {
+    return this.name
   }
 }
 
@@ -19,7 +22,7 @@ class SalarySlip {
     return this.employee.getId()
   }
   getName(){
-    return 'John J Doe'
+    return this.employee.getName()
   }
 }
 

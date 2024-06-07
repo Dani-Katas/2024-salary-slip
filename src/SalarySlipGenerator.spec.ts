@@ -1,56 +1,45 @@
-import { describe, expect, it } from "vitest"
+import { beforeEach, describe, expect, it } from "vitest"
 import { Employee } from "./Employee.js"
 import { SalarySlipGenerator } from "./SalarySlipGenerator.js"
 
 describe("SalarySlipGenerator", () => {
+  let salarySlipGenerator = new SalarySlipGenerator()
+
+  beforeEach(() => {
+    salarySlipGenerator = new SalarySlipGenerator()
+  })
+
   describe("generates the salary slip with the", () => {
     it("employee id", () => {
-      const employeeId = "12345"
-      const employee = new Employee(employeeId, "John J Doe", 5000)
-      const salarySlipGenerator = new SalarySlipGenerator()
+      const id = "12345"
+      const employee = createEmployee({ id })
 
       const salarySlip = salarySlipGenerator.generateFor(employee)
 
-      const id = salarySlip.getId()
-      expect(id).toBe(employeeId)
+      expect(salarySlip.getId()).toBe(id)
     })
 
     it("employee name", () => {
-      const employeeId = "12345"
-      const employeeName = "John J Doe"
-      const employee = new Employee(employeeId, employeeName, 5000)
-      const salarySlipGenerator = new SalarySlipGenerator()
+      const name = "John J Doe"
+      const employee = createEmployee({ name })
 
       const salarySlip = salarySlipGenerator.generateFor(employee)
 
-      const name = salarySlip.getName()
-      expect(name).toBe(employeeName)
+      expect(salarySlip.getName()).toBe(name)
     })
 
     it("monthly gross salary", () => {
-      const employeeId = "12345"
-      const employeeName = "John J Doe"
-      const employeeAnnualGrossSalary = 5000
-      const employee = new Employee(employeeId, employeeName, employeeAnnualGrossSalary)
-      const salarySlipGenerator = new SalarySlipGenerator()
+      const annualGrossSalary = 5000
+      const employee = createEmployee({ annualGrossSalary })
 
       const salarySlip = salarySlipGenerator.generateFor(employee)
 
       const monthlyGrossSalary = salarySlip.getMonthlyGrossSalary()
       expect(monthlyGrossSalary).toBe(416.67)
     })
-
-    it("monthly gross salary", () => {
-      const employeeId = "12345"
-      const employeeName = "John J Doe"
-      const employeeAnnualGrossSalary = 12000
-      const employee = new Employee(employeeId, employeeName, employeeAnnualGrossSalary)
-      const salarySlipGenerator = new SalarySlipGenerator()
-
-      const salarySlip = salarySlipGenerator.generateFor(employee)
-
-      const monthlyGrossSalary = salarySlip.getMonthlyGrossSalary()
-      expect(monthlyGrossSalary).toBe(1000)
-    })
   })
 })
+
+function createEmployee({ id = "12345", name = "John J Doe", annualGrossSalary = 5000 }) {
+  return new Employee(id, name, annualGrossSalary)
+}

@@ -12,6 +12,6 @@ export class SalarySlip {
   }
 
   getMonthlyGrossSalary() {
-    return Math.round((this.employee.getAnualGrossSalary() / 12) * 100) / 100
+    return this.employee.getAnualGrossSalary().divideBy(12).getValue()
   }
 }

@@ -1,9 +1,15 @@
+import { Money } from "./Money.js"
+
 export class Employee {
+  private readonly anualGrossSalary: Money
+
   constructor(
     private id: string,
     private name: string,
-    private anualGrossSalary: number,
-  ) {}
+    anualGrossSalary: number,
+  ) {
+    this.anualGrossSalary = new Money(anualGrossSalary)
+  }
 
   getId() {
     return this.id

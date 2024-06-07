@@ -4,7 +4,7 @@ class Employee {
   constructor(
     private id: string,
     private name: string,
-    anualGrossSalary: number,
+    private anualGrossSalary: number,
   ) {}
 
   getId() {
@@ -12,6 +12,9 @@ class Employee {
   }
   getName() {
     return this.name
+  }
+  getAnualGrossSalary(){
+    return this.anualGrossSalary
   }
 }
 
@@ -25,7 +28,7 @@ class SalarySlip {
     return this.employee.getName()
   }
   getMonthlyGrossSalary(){
-    return 416.67
+    return Math.round((this.employee.getAnualGrossSalary() / 12) * 100) / 100
   }
 }
 
@@ -71,6 +74,19 @@ describe("SalarySlipGenerator", () => {
 
       const monthlyGrossSalary = salarySlip.getMonthlyGrossSalary()
       expect(monthlyGrossSalary).toBe(416.67)
+    })
+
+    it("monthly gross salary", () => {
+      const employeeId = "12345"
+      const employeeName = "John J Doe";
+      const employeeAnnualGrossSalary = 12000;
+      const employee = new Employee(employeeId, employeeName, employeeAnnualGrossSalary)
+      const salarySlipGenerator = new SalarySlipGenerator()
+
+      const salarySlip = salarySlipGenerator.generateFor(employee)
+
+      const monthlyGrossSalary = salarySlip.getMonthlyGrossSalary()
+      expect(monthlyGrossSalary).toBe(1000)
     })
   })
 })

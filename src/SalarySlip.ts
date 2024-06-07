@@ -1,17 +1,21 @@
-import { Employee } from "./Employee.js"
+import { Money } from "./Money.js"
 
 export class SalarySlip {
-  constructor(private employee: Employee) {}
+  constructor(
+    private readonly employeeId: string,
+    private readonly employeeName: string,
+    private readonly monthlyGrossSalary: Money,
+  ) {}
 
   getId() {
-    return this.employee.getId()
+    return this.employeeId
   }
 
   getName() {
-    return this.employee.getName()
+    return this.employeeName
   }
 
   getMonthlyGrossSalary() {
-    return this.employee.getAnualGrossSalary().divideBy(12).getValue()
+    return this.monthlyGrossSalary.getValue()
   }
 }
